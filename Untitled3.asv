@@ -17,14 +17,14 @@ bode(G)
 
 %%
 s = tf('s');
-G1 = 100/((s+100)*(s+36)*s);
+G1 = 100*1440/((s+100)*(s+36)*s);
 %G2 = G1+1;
 %pzmap(G1)
 %figure
 %pzmap(G2)
 %figure
 %nyquist(G1)
-C = 1440*(0.04*s+1)/(0.02*s+1);
+C = (0.04*s+1)/(0.02s+0.07);
 figure
 bode(G1)
 grid on
@@ -33,13 +33,13 @@ G2 = 10*G1;
 G3 = G1*C;
 G4 = G1*1/C;
 %%bode(G2)
-bode(G3)
+%%bode(G3)
 %%bode(G4)
 %figure
 %rlocus(G1)
 
-figure
-step(feedback(G3,1))
+%figure
+%step(feedback(G1,1))
 %%
 sy
 %%
